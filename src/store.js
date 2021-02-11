@@ -122,7 +122,7 @@ const addresses = [
         address_id: uuid.v4(),
         address_name: "Bill Tread",
         address_city: "Raleigh",
-        address_state: "North Caroline",
+        address_state: "North Carolina",
         address_street: "392 Alabaster Avenue",
         address_zip: "33862",
         address_category: 'Friend'

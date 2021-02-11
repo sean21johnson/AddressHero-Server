@@ -10,7 +10,6 @@ const addressRouter = require('./addresses/addresses-router')
 
 const errorHandler = require('./error-handler');
 
-
 const app = express()
 
 const morganOption = (NODE_ENV === 'production')

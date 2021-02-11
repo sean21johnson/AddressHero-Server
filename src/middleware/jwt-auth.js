@@ -3,16 +3,17 @@ const AuthService = require("../auth/auth-service");
 function requireAuth(req, res, next) {
 	const authToken = req.get("authorization") || "";
 
+	console.log(authToken)
+
 	let bearerToken;
-	if (!authToken.toLowerCase().startsWith("addresshero-client-auth-token ")) {
+	if (!authToken.toLowerCase().startsWith("bearer ")) {
 		return res.status(401).json({ error: "Missing token" });
 	} else {
-		bearerToken = authToken.slice(25, authToken.length);
+		bearerToken = authToken.slice(7, authToken.length);
 	}
 
 	try {
 		const payload = AuthService.verifyJwt(bearerToken);
-
 		AuthService.getUserWithUserName(req.app.get("db"), payload.sub)
 
 			.then((user) => {
@@ -32,4 +33,5 @@ function requireAuth(req, res, next) {
 }
 
 module.exports = {
-	requireAuth,
+	requireAuth
+}

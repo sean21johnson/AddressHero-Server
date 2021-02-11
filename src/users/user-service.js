@@ -47,7 +47,6 @@ const UsersService = {
 			email: xss(user.email),
 			username: xss(user.username),
 			pass_word: xss(user.pass_word),
-			date_created: new Date(user.date_created),
 		};
 	},
 };

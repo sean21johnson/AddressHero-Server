@@ -7,6 +7,7 @@ const { requireAuth } = require('../middleware/jwt-auth');
 const addressRouter = express.Router();
 const bodyParser = express.json();
 
+
 addressRouter
 	.route("/")
 	.get(requireAuth, (req, res, next) => {
@@ -42,27 +43,27 @@ addressRouter
 
 	.post(requireAuth, bodyParser, (req, res, next) => {
 		for (let field of [
-			"address_name",
+			"contact_name",
 			"address_city",
 			"address_state",
 			"address_street",
 			"address_zip",
-			"address_category"
+			"address_phone"
 		]) {
 			if (!req.body[field]) {
 				logger.error(`${field} is required`);
 				return res.status(400).send(`${field} is required`);
 			}
 		}
-		const { address_name, address_city, address_state, address_street, address_zip, address_category } = req.body;
+		const { contact_name, address_city, address_state, address_street, address_zip, address_phone } = req.body;
 		const newAddress = {
 			address_id: uuid.v4(),
-			address_name,
+			contact_name,
 			address_city,
 			address_state,
 			address_street,
 			address_zip,
-			address_category
+			address_phone
 		};
 
 		newAddress.users_id = req.user.users_id;
@@ -113,7 +114,7 @@ addressRouter
 	.patch(bodyParser, (req, res, next) => {
 		const {
 			address_id,
-			address_name,
+			contact_name,
 			address_city,
 			address_state,
 			address_street,
@@ -122,7 +123,7 @@ addressRouter
 		} = req.body;
 		const AddressToUpdate = {
 			address_id,
-			address_name,
+			contact_name,
 			address_city,
 			address_state,
 			address_street,

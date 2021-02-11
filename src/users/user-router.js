@@ -1,7 +1,7 @@
 const express = require("express");
 const uuid = require("uuid");
 const path = require("path");
-const UsersService = require("./users-service");
+const UsersService = require("./user-service");
 
 const usersRouter = express.Router();
 const jsonBodyParser = express.json();
@@ -37,7 +37,6 @@ usersRouter.post("/", jsonBodyParser, (req, res, next) => {
 					email,
 					username: username.toLowerCase(),
 					pass_word: hashedPassword,
-					date_created: new Date(),
 				};
 				return UsersService.insertUser(req.app.get("db"), newUser).then(
 					(user) => {
