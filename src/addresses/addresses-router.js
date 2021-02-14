@@ -57,7 +57,7 @@ addressRouter
 		}
 		const { contact_name, address_city, address_state, address_street, address_zip, address_phone } = req.body;
 		const newAddress = {
-			address_id: uuid.v4(),
+			contact_id: uuid.v4(),
 			contact_name,
 			address_city,
 			address_state,
@@ -69,9 +69,10 @@ addressRouter
 		newAddress.users_id = req.user.users_id;
 
 		AddressService.insertNewAddress(req.app.get("db"), newAddress)
-			.then((address) => {
-				logger.info(`Address with id ${newAddress.address_id} created`);
-				res.status(201).location(`/api/languages/${newAddress.address_id}`).json(address);
+			.then(() => {
+				logger.info(`Contact with id ${newAddress.contact_id} created`);
+				// res.status(201).location(`/api/languages/${newAddress.contact_id}`).json(address);
+				res.status(201).send("success");
 			})
 			.catch(next);
 	});
@@ -95,17 +96,17 @@ addressRouter
 	})
 
 	.delete((req, res, next) => {
-		const { id } = req.params;
+		const {id} = req.params;
 
-		AddressService.deleteSpecificAddress(req.app.get("db"), id)
+		AddressService.deleteSpecificContact(req.app.get("db"), id)
 			.then((address) => {
 				if (!address) {
-					logger.error(`Address with id ${id} not found`);
+					logger.error(`Contact with id ${id} not found`);
 					return res.status(404).json({
-						error: { message: `Address not found` },
+						error: { message: `Contact not found` },
 					});
 				}
-				logger.info(`Address with id ${id} deleted from address collection`);
+				logger.info(`Contact with id ${id} deleted from address collection`);
 				return res.status(204).end();
 			})
 			.catch(next);
@@ -113,7 +114,7 @@ addressRouter
 
 	.patch(bodyParser, (req, res, next) => {
 		const {
-			address_id,
+			contact_id,
 			contact_name,
 			address_city,
 			address_state,
@@ -122,7 +123,7 @@ addressRouter
 			address_category
 		} = req.body;
 		const AddressToUpdate = {
-			address_id,
+			contact_id,
 			contact_name,
 			address_city,
 			address_state,

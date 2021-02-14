@@ -1,7 +1,7 @@
 BEGIN;
 
 INSERT INTO addresses
-    (address_id, phone_number, contact_name, address_city, address_state, address_street, address_zip, address_category, address_map, users_id)
+    (contact_id, phone_number, contact_name, address_city, address_state, address_street, address_zip, address_map, users_id)
     VALUES
     ('3', '5555555555', 'Jayson Tatum', 'Boston', 'MA', '110 Legends Way', '02114', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11791.55727632846!2d-71.062146!3d42.366198!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x32d335fe5ed797a8!2sTD%20Garden!5e0!3m2!1sen!2sus!4v1612981682945!5m2!1sen!2sus', '1'),
     ('4', '5555555555', 'Kevin Durant', 'Brooklyn', 'NY', '620 Atlantic Ave', '11217', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12102.424532936515!2d-73.9754156!3d40.6826465!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb9949385da52e69e!2sBarclays%20Center!5e0!3m2!1sen!2sus!4v1612982753062!5m2!1sen!2sus','1'),
