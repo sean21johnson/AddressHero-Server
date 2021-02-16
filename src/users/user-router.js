@@ -31,7 +31,6 @@ usersRouter.post("/", jsonBodyParser, (req, res, next) => {
 
 			return UsersService.hashPassword(password).then((hashedPassword) => {
 				const newUser = {
-					users_id: uuid.v4(),
 					first_name,
 					last_name,
 					email,
@@ -43,7 +42,8 @@ usersRouter.post("/", jsonBodyParser, (req, res, next) => {
 						res
 							.status(201)
 							.location(path.posix.join(req.originalUrl, `/${user.id}`))
-							.json(UsersService.serializeUser(user));
+							.json(UsersService.serializeUser(user))
+							
 					}
 				);
 			});

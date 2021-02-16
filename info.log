@@ -57,3 +57,38 @@
 {"message":"New timeline post with 2a608518-50f8-429f-93dd-318c8388b671 created","level":"info"}
 {"message":"New timeline post with 1916a46f-ddf7-4fc6-bc27-cfc330fee111 created","level":"info"}
 {"message":"New timeline post with id a2f35a3b-5d3c-49a9-9a75-6b145c0b55e7 created","level":"info"}
+{"message":"Contact created","level":"info"}
+{"message":"Contact with id 18888 not found","level":"error"}
+{"message":"Contact with id 11 deleted from address collection","level":"info"}
+{"message":"Contact created","level":"info"}
+{"message":"us_state is required","level":"error"}
+{"message":"map is required","level":"error"}
+{"message":"Address added","level":"info"}
+{"message":"Address added","level":"info"}
+{"message":"Address with id 11 deleted from address collection","level":"info"}
+{"message":"Address with id 21 deleted from address collection","level":"info"}
+{"message":"Address with id 18 deleted from address collection","level":"info"}
+{"message":"Address with id 2 deleted from address collection","level":"info"}
+{"message":"Address with id 1 deleted from address collection","level":"info"}
+{"message":"Address with id 19 deleted from address collection","level":"info"}
+{"message":"Address with id 13 deleted from address collection","level":"info"}
+{"message":"Address with id 5 deleted from address collection","level":"info"}
+{"message":"Address with id 7 deleted from address collection","level":"info"}
+{"message":"Address with id 14 deleted from address collection","level":"info"}
+{"message":"Address with id 8 deleted from address collection","level":"info"}
+{"message":"Address with id 4 deleted from address collection","level":"info"}
+{"message":"Address with id 17 deleted from address collection","level":"info"}
+{"message":"Address with id 6 deleted from address collection","level":"info"}
+{"message":"Address with id 3 deleted from address collection","level":"info"}
+{"message":"Address added","level":"info"}
+{"message":"Address added","level":"info"}
+{"message":"Address with id 24 deleted from address collection","level":"info"}
+{"message":"cardType is required","level":"error"}
+{"message":"Timeline post added","level":"info"}
+{"message":"cardType is required","level":"error"}
+{"message":"cardType is required","level":"error"}
+{"message":"cardType is required","level":"error"}
+{"message":"cardType is required","level":"error"}
+{"message":"cardType is required","level":"error"}
+{"message":"cardType is required","level":"error"}
+{"message":"Timeline post added","level":"info"}

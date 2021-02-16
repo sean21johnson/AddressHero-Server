@@ -6,8 +6,9 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const usersRouter = require('./users/user-router')
 const authrouter = require('./auth/auth-router')
-const addressRouter = require('./addresses/addresses-router')
+// const addressRouter = require('./addresses/addresses-router')
 const timelineRouter = require('./timeline/timeline-router')
+const contactRouter = require("./contacts/contact-router")
 
 const errorHandler = require('./error-handler');
 
@@ -23,7 +24,7 @@ app.use(helmet())
 
 app.use('/api/users', usersRouter)
 app.use('/api/login', authrouter)
-app.use('/api/addresses', addressRouter)
+app.use('/api/contacts', contactRouter)
 app.use('/api/timeline', timelineRouter)
 
 app.get('/', (req, res) => {
