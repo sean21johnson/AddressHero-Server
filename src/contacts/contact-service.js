@@ -15,6 +15,8 @@ const ContactsService = {
             })
     },
     deleteContact(knex, contact_id, user_id) {
+        console.log('id is ', contact_id)
+        console.log('user id is ', user_id)
         return knex
             .from("contacts")
             .where("id", contact_id)
@@ -27,6 +29,13 @@ const ContactsService = {
             .where("id", contact_id)
             .where("users_id", user_id)
             .limit(1)
+    },
+    getSearchResults(knex, users_id, search) {
+        return knex
+            .select("*")
+            .from("contacts")
+            .where("fullname", "ILIKE", `%${search}%`)
+            .where("users_id", users_id)
     },
     updateContact(knex, contact_id, user_id, newContact) {
         return knex

@@ -14,12 +14,27 @@ contactRouter
     .get(requireAuth, (req, res, next) => {
         const db_connection = req.app.get("db");
         const users_id = req.user.id;
+        const {search = ""} = req.query;
 
-        ContactsService.getAllContacts(db_connection, users_id)
+        if (search === "" || !search) {
+            ContactsService.getAllContacts(db_connection, users_id)
+                .then((contacts) => {
+                    res.status(200).json(contacts)
+                })
+                .catch(next);
+        }
+        else if (typeof(search === "string")) {
+            ContactsService.getSearchResults(
+                db_connection,
+                users_id,
+                search
+            )
             .then((contacts) => {
-                res.status(200).json(contacts)
+                console.log('contacts are ', contacts)
+                res.status(200).json(contacts);
             })
             .catch(next);
+        }
     })
 
     .post(requireAuth, bodyParser, (req, res, next) => {
@@ -28,7 +43,8 @@ contactRouter
 
         for (let field of [
             "fullname",
-            "phone_number"
+            "phone_number",
+            "picture"
         ]) {
             if (!req.body[field]) {
 				logger.error(`${field} is required`);
@@ -36,18 +52,20 @@ contactRouter
 			}
         }
 
-        const { fullname, phone_number } = req.body;
+        const { fullname, phone_number, picture } = req.body;
         const newContact = {
             fullname,
             phone_number,
-            users_id
+            users_id,
+            picture
         }
 
         ContactsService.insertNewContact(db_connection, newContact)
             .then((contact) => {
+                console.log(contact)
                 logger.info(`Contact created`);
                 // res.status(201).location(`/api/languages/${newAddress.contact_id}`).json(address);
-                res.status(201).send("success");
+                res.status(201).send(contact);
             })
             .catch(next);
     })
@@ -72,7 +90,8 @@ contactRouter
         const { id } = req.params;
         const user_id = req.user.id;
 
-        //todo validate that the contact_id belongs to the users_id logged in
+        // console.log('id is ', id)
+        // console.log('user id is ', user_id)
 
         ContactsService.deleteContact(db_connection, id, user_id)
         .then((contact) => {
@@ -93,7 +112,7 @@ contactRouter
         const user_id = req.user.id;
         
         for (let field of [
-            "fullname", "phone_number",
+            "fullname", "phone_number", "picture"
         ]) {
             if (!req.body[field]) {
                 logger.error(`${field} is required`);
@@ -202,8 +221,6 @@ contactRouter
         }
         }
 
-        console.log('made it here')
-
         const {event_type, address_id} = req.body
         const newTimelinePost = {
             event_type: event_type,
@@ -211,10 +228,6 @@ contactRouter
             users_id: user_id,
             date_created: new Date()
         }
-
-        console.log("user id is ", user_id)
-        console.log("address id is ", id)
-        console.log("newTimelinePost is ", newTimelinePost)
 
         ContactsService.insertTimelinePost(db_connection, newTimelinePost)
             .then((newPost) => {
