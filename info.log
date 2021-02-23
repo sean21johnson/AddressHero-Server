@@ -186,3 +186,10 @@
 {"message":"Contact created","level":"info"}
 {"message":"Contact with id 12 deleted from address collection","level":"info"}
 {"message":"Contact created","level":"info"}
+{"message":"Address added","level":"info"}
+{"message":"Address with id 21 deleted from address collection","level":"info"}
+{"message":"Address added","level":"info"}
+{"message":"Timeline post added","level":"info"}
+{"message":"Contact with id 13 deleted from address collection","level":"info"}
+{"message":"Timeline post added","level":"info"}
+{"message":"Timeline post added","level":"info"}
