@@ -6,7 +6,6 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const usersRouter = require('./users/user-router')
 const authrouter = require('./auth/auth-router')
-// const addressRouter = require('./addresses/addresses-router')
 const timelineRouter = require('./timeline/timeline-router')
 const contactRouter = require("./contacts/contact-router")
 

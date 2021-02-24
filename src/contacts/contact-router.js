@@ -30,7 +30,6 @@ contactRouter
                 search
             )
             .then((contacts) => {
-                console.log('contacts are ', contacts)
                 res.status(200).json(contacts);
             })
             .catch(next);
@@ -62,9 +61,7 @@ contactRouter
 
         ContactsService.insertNewContact(db_connection, newContact)
             .then((contact) => {
-                console.log(contact)
                 logger.info(`Contact created`);
-                // res.status(201).location(`/api/languages/${newAddress.contact_id}`).json(address);
                 res.status(201).send(contact);
             })
             .catch(next);
@@ -89,9 +86,6 @@ contactRouter
         const db_connection = req.app.get("db");
         const { id } = req.params;
         const user_id = req.user.id;
-
-        // console.log('id is ', id)
-        // console.log('user id is ', user_id)
 
         ContactsService.deleteContact(db_connection, id, user_id)
         .then((contact) => {

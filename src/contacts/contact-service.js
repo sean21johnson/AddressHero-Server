@@ -15,8 +15,6 @@ const ContactsService = {
             })
     },
     deleteContact(knex, contact_id, user_id) {
-        console.log('id is ', contact_id)
-        console.log('user id is ', user_id)
         return knex
             .from("contacts")
             .where("id", contact_id)
