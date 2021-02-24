@@ -3,25 +3,25 @@ const app = require("../src/app");
 const helpers = require("./test-helpers");
 
 describe("Users Endpoints", function () {
-    let db;
+	let db;
 
-    const { testUsers } = helpers.makeContactsFixtures();
+	const { testUsers } = helpers.makeContactsFixtures();
 
-    before("make knex instance", () => {
-        db = knex({
-            client: "pg",
-            connection: process.env.DATABASE_URL_TEST
-        });
-        app.set("db", db)
-    })
+	before("make knex instance", () => {
+		db = knex({
+			client: "pg",
+			connection: process.env.DATABASE_URL_TEST,
+		});
+		app.set("db", db);
+	});
 
-    after("disconnect from db", () => db.destroy());
+	after("disconnect from db", () => db.destroy());
 
-    before("cleanup", () => helpers.cleanTables(db));
+	before("cleanup", () => helpers.cleanTables(db));
 
-    afterEach("cleanup", () => helpers.cleanTables(db));
+	afterEach("cleanup", () => helpers.cleanTables(db));
 
-    describe(`POST /api/users`, () => {
+	describe(`POST /api/users`, () => {
 		context(`User Validation`, () => {
 			beforeEach("insert users", () => {
 				helpers.seedUsers(db, testUsers);
@@ -41,4 +41,4 @@ describe("Users Endpoints", function () {
 			});
 		});
 	});
-})
+});
