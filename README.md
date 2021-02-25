@@ -1,4 +1,4 @@
-# Address Hero - Client
+# Address Hero - Server
 
 ## Store contacts & addresses. Keep track of cards you have sent in the mail.
 
